@@ -1,0 +1,45 @@
+xx1 -> xx (sub div)
+001 -> x0 
+001 ->
+
+0110 4
+0111 5
+1110 6
+1111 6
+
+
+
+0000000001 sub
+0000000011 sub sub sub
+
+| becomes 0
+00000000|1 sub div				2
+0000000|11 add div div sub			4
+000000|111 add div div div sub		5
+00000|1111 add div div div div sub	6
+
+| becomes 1
+00000000|1 add div				2
+0000000|11 add div div 			3
+000000|111 add div div div 		4
+00000|1111 add div div div div 		5
+
+0000100101..
+
+10 div sub
+11 sub sub sub
+
+
+cost(int count, bool carry) //starting from index before e.g. 11110 start at 0
+	1, false => 2
+	2, false => 4
+	3, false => 6
+	4, false => 7
+	if carry
+		return cost(count + 1, false) - 1
+		
+		
+111 
+smart field development kit box briefcase
+
+smart field in a box
