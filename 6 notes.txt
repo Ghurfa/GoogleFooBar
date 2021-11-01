@@ -24,6 +24,13 @@ xx1 -> xx (sub div)
 000000|111 add div div div 		4
 00000|1111 add div div div div 		5
 
+
+
+01 0
+11 2
+111 4
+1111 5
+
 0000100101..
 
 10 div sub
@@ -39,7 +46,42 @@ cost(int count, bool carry) //starting from index before e.g. 11110 start at 0
 		return cost(count + 1, false) - 1
 		
 		
-111 
-smart field development kit box briefcase
 
-smart field in a box
+1010101
+1010110
+0101011
+0101100
+0010110
+0001011
+0001100
+0000110
+0000011
+0000010
+0000001
+
+1010101
+1010100
+0101010
+0010101
+0010100
+0001010
+0000101
+0000100
+0000010
+0000001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
