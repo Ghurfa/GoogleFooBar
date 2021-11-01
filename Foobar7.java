@@ -12,7 +12,7 @@ public class Foobar7 {
         }
     }
 
-    private static boolean doesGameEnd(int startA, int startB) {
+    private static boolean doesGameEndOld(int startA, int startB) {
         int slowA = startA;
         int slowB = startB;
         int fastA = startA;
@@ -54,9 +54,34 @@ public class Foobar7 {
         return slowA == slowB;
     }
 
+    private static boolean doesGameEnd(int startA, int startB) {
+        int currA = startA;
+        int currB = startB;
+        while(currA != currB) {
+            if(currA % 2 != currB % 2) {
+                return false;
+            }
+            else if(currA % 2 == 0) {
+                currA /= 2;
+                currB /= 2;
+            }
+            else { //Both are odd
+                if(currA < currB) {
+                    currB -= currA;
+                    currA *= 2;
+                }
+                else {
+                    currA -= currB;
+                    currB *= 2;
+                }
+            }
+        }
+        return true;
+    }
+
     private static int getMostPairings(ArrayList<Pairing> pairings, boolean[] usedGuards, int startAt) {
         int best = 0;
-        for(int i = startAt; i < pairings.size(); i++) {
+        for(int i = startAt; i < pairings.size() - best; i++) {
             Pairing pair = pairings.get(i);
             if(!usedGuards[pair.indexA] && !usedGuards[pair.indexB]) {
                 usedGuards[pair.indexA] = true;
@@ -78,11 +103,20 @@ public class Foobar7 {
         for(int i = 0; i < banana_list.length - 1; i++) {
             int countA = banana_list[i];
             for(int j = i + 1; j < banana_list.length; j++) {
-                int countB = banana_list[j];
-                if(!doesGameEnd(countA, countB)) {
+                int countB = banana_list[j];    
+                boolean ends = doesGameEnd(countA, countB);
+                boolean endsOld = doesGameEndOld(countA, countB);
+                if(ends != endsOld) {
+                    int a = 2;
+                }
+                if(!ends) {
                     infinitePairings.add(new Pairing(i, j));
                 }
             }
+        }
+
+        for(Pairing pair : infinitePairings) {
+            System.out.println(pair.indexA + "\t" + pair.indexB);
         }
 
         boolean[] usedGuards = new boolean[banana_list.length];
@@ -90,7 +124,10 @@ public class Foobar7 {
     }
 
     public static void main(String[] args) {
-        int[] bananaList = {2, 10};
+        int[] bananaList = new int[9];
+        for(int i = 0; i < 9; i++) {
+            bananaList[i] = i;
+        }
         System.out.println(solution(bananaList));
     }
 }
