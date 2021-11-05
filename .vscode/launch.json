@@ -1,0 +1,70 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar1",
+            "request": "launch",
+            "mainClass": "Foobar1",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar2",
+            "request": "launch",
+            "mainClass": "Foobar2",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar3",
+            "request": "launch",
+            "mainClass": "Foobar3",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar4",
+            "request": "launch",
+            "mainClass": "Foobar4",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar5",
+            "request": "launch",
+            "mainClass": "Foobar5",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar6",
+            "request": "launch",
+            "mainClass": "Foobar6",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch Foobar7",
+            "request": "launch",
+            "mainClass": "Foobar7",
+            "projectName": "GoogleFooBar_c8a135b4"
+        },
+        {
+            "type": "java",
+            "name": "Launch MarkovTesting",
+            "request": "launch",
+            "mainClass": "MarkovTesting",
+            "projectName": "GoogleFooBar_c8a135b4"
+        }
+    ]
+}
