@@ -1,11 +1,19 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.util.TreeSet;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 public class Foobar7 {
-    private static class GuardNode {
-        public Set<GuardNode> neighbors = new HashSet();
+    private static class GuardNode implements Comparable{
+        public Set<GuardNode> neighbors = new TreeSet();
         public boolean isUsed = false;
         public int value; //for debugging purposes
+
+        public int compareTo(Object other) {
+            return value - ((GuardNode)other).value;
+        }
 
         public void addNeighbor(GuardNode node) {
             neighbors.add(node);
@@ -91,6 +99,15 @@ public class Foobar7 {
         else return 0;
     }
 
+    private static <E> boolean hasIntersection(Set<E> a, Set<E> b) {
+        for(E item : a) {
+            if(b.contains(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static int solution(int[] banana_list) {
         GuardNode[] nodes = new GuardNode[banana_list.length];
 
@@ -111,16 +128,35 @@ public class Foobar7 {
                 }
             }
         }
+        
+        String out = "";
+        for(int i = 0; i < nodes.length; i++) {
+            GuardNode node = nodes[i];
+            String print = "";
+            for(int j = 0; j < nodes.length; j++) {
+                GuardNode neighbor = nodes[j];
+                if(node.neighbors.contains(neighbor)) {
+                    print += "(" + node.value + ", " + neighbor.value+")" + ", ";
+                }
+            }
+            if(print.length() > 0) {
+                out += print.substring(0, print.length() - 2) + "\n";
+            }
+        }
 
-        return banana_list.length - 2 * countMostPairings(nodes);
+        StringSelection selection = new StringSelection(out);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection); //paste into desmos
+
+        return 1;
     }
 
     public static void main(String[] args) {
-        int[] bananaList = new int[17];
-        for(int i = 0; i < 17; i++) {
+        int[] bananaList = new int[30];
+        for(int i = 0; i < bananaList.length; i++) {
             bananaList[i] = i;
         }
-        //int[] bananaList = {16, 2, 6, 1};
-        System.out.println(solution(bananaList));
+        //int[] bananaList = {1, 3, 2, 6};
+        solution(bananaList);
     }
 }
