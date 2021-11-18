@@ -253,8 +253,5 @@ public class Foobar7 {
         // int[] bananaList = { 1, 7, 3, 13, 19 };
         int solution = solution(bananaList);
         System.out.println(solution);
-        if (solution != Foobar7Old.solution(bananaList)) {
-            throw new RuntimeException();
-        }
     }
 }
